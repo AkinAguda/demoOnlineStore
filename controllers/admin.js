@@ -1,19 +1,26 @@
 const Product = require('../models/products');
 
 exports.getAddProduct = (req, res, next) => {
-  res.render('add-product', {
+  res.render('admin/add-product', {
     pageTitle: 'Add Products',
     path: '/admin/new',
   });
 };
 
 exports.postAddProduct = (req, res, next) => {
-  const product = new Product(req.body.title);
+  const {
+    title, url, description, price,
+  } = req.body;
+  const product = new Product(title, url, description, price);
   product.save();
   res.redirect('/');
 };
 
 exports.getProducts = async (req, res, next) => {
   const products = await Product.fetchAll();
-  res.render('shop', { prods: products, pageTitle: 'SHOP', path: '/' });
+  res.render('admin/products', {
+    prods: products,
+    pageTitle: 'Products (Admin)',
+    path: '/admin/products',
+  });
 };
