@@ -17,7 +17,7 @@ module.exports = class Product {
       if (!err) {
         products = JSON.parse(content);
       } else {
-        throw err;
+        // throw err;
       }
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (error) => {
