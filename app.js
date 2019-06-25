@@ -4,7 +4,7 @@ const { urlencoded } = require('body-parser');
 
 const path = require('path');
 const { notFound } = require('./controllers/404');
-const { adminRoutes, product } = require('./routes/admin');
+const { adminRoutes } = require('./routes/admin');
 const { home } = require('./routes/shop');
 
 
